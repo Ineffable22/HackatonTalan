@@ -5,5 +5,5 @@ router = APIRouter()
 
 
 @router.post("/", status_code=200)
-def holi():
+async def holi():
     return {"message": "Hello World"}
