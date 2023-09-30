@@ -10,6 +10,10 @@ import { EntryPageComponent } from './pages/entry-page/entry-page.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginFormComponent } from './pages/entry-page/components/login-form/login-form.component';
 import { SignupFormComponent } from './pages/entry-page/components/signup-form/signup-form.component';
+import { LayoutsModule } from './layouts/layouts.module';
+import { AlertsComponent } from './pages/alerts/alerts.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ConfigurationComponent } from './pages/configuration/configuration.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,9 @@ import { SignupFormComponent } from './pages/entry-page/components/signup-form/s
     DashboardComponent,
     LoginFormComponent,
     SignupFormComponent,
+    AlertsComponent,
+    ProfileComponent,
+    ConfigurationComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +33,14 @@ import { SignupFormComponent } from './pages/entry-page/components/signup-form/s
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    LayoutsModule,
   ],
-  exports: [EntryPageComponent],
+  exports: [
+    EntryPageComponent,
+    DashboardComponent,
+    AlertsComponent,
+    ProfileComponent,
+    ConfigurationComponent,
+  ],
 })
 export class ViewsModule {}
