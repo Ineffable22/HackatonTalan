@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.routes.v1.get import router as holi
+from api.routes.v1.holitest import holi
 
 router = APIRouter()
 
