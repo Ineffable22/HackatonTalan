@@ -3,8 +3,7 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormGroupDirective,
-  NgForm,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 
@@ -16,19 +15,19 @@ import {
 export class SignupFormComponent {
   protected showPassword: boolean = false;
   protected showConfirmPassword: boolean = false;
-  signupForm = new FormGroup(
-    {
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(36),
-      ]),
-      confirmPassword: new FormControl('', [Validators.required]),
-    },
-    [this.passwordMatch('password', 'confirmPassword')]
-  );
+  signupForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(36),
+    ]),
+    confirmPassword: new FormControl('', [
+      Validators.required,
+      this.passwordMatch(),
+    ]),
+  });
 
   get nameController() {
     return this.signupForm.controls.name;
@@ -50,23 +49,18 @@ export class SignupFormComponent {
     this.signupForm.reset();
   }
 
-  showErrors() {
-    console.log(this.signupForm.errors);
-    console.log(this.signupForm.hasError('passwordMismatchError'));
-  }
+  passwordMatch(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const passwordValue = this.signupForm?.controls.password.value ?? '';
+      const confirmPasswordCOntrol = control.value;
 
-  passwordMatch(password: string, confirmPassword: string) {
-    return function (form: AbstractControl) {
-      const passwordValue = form.get(password)?.value;
-      const confirmPasswordValue = form.get(confirmPassword)?.value;
-
-      if (passwordValue === confirmPasswordValue) return null;
+      if (passwordValue === confirmPasswordCOntrol) return null;
 
       return { passwordMismatchError: true };
     };
   }
 
-  submitForm(event: SubmitEvent) {
+  submitForm(event: MouseEvent) {
     event.preventDefault();
     this.cleanForm();
   }
