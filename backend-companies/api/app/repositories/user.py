@@ -28,6 +28,22 @@ class UserRepository:
         else:
             return None
     
+    def filter_one(self, key, value):
+        if key == "id":
+            user = collection.find_one({'_id': ObjectId(value)})
+        else:
+            user = collection.find_one({key: value})
+        if (user):
+            return userEntity(user)
+        return None
+    
+    def filter_all(self, search: dict):
+        users = []
+        cursor = collection.find(search)
+        if (cursor):
+            users = usersEntity(cursor)
+        return users
+
     def add(self, user):
         new_user = collection.insert_one(dict(user))
         created_user = collection.find_one({'_id': new_user.inserted_id})
