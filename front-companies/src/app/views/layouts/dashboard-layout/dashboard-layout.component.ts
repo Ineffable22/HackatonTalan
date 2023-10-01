@@ -14,14 +14,11 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   constructor(private firebase: FirebaseService) {}
 
   ngOnInit(): void {
-    console.log('before');
     this.subscription = this.firebase.receiveMessage().subscribe((payload) => {
-      console.log('AAAAAAAAAAAAAAAAAAAAAAA');
       console.log(payload);
       this.mesaggeReceived = payload.notification?.title ?? '';
       console.log(this.mesaggeReceived);
     });
-    console.log('after');
   }
 
   ngOnDestroy(): void {

@@ -6,6 +6,8 @@ export const environment = {
     apiKey: 'AIzaSyAjp0rZ-wlREP9aZxU8m5N7wSiszOnJREE',
     authDomain: 'push-test2-95c61.firebaseapp.com',
     messagingSenderId: '236107690508',
-    vapidKey: "BGruyIkT5atrXkwGHxq7FleQo6uYE6hy4LX52jkZc-0P59UWtXsxD8VJz5UYA0HwzhBoblpoeWZpblSFX-6QKRA"
+    vapidKey:
+      'BGruyIkT5atrXkwGHxq7FleQo6uYE6hy4LX52jkZc-0P59UWtXsxD8VJz5UYA0HwzhBoblpoeWZpblSFX-6QKRA',
   },
+  apiUrl: 'http://127.0.0.1:8000/api',
 };

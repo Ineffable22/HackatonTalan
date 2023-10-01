@@ -1,5 +1,6 @@
 <div class="container">
-  <mat-tab-group class="tabContainer" dynamicHeight>
+  <mat-tab-group class="tabContainer" dynamicHeight [selectedIndex]="idx.value"
+    (selectedIndexChange)="idx.setValue($event)">
     <mat-tab label="Log In">
       <div class="tab">
         <app-login-form></app-login-form>
@@ -7,7 +8,7 @@
     </mat-tab>
     <mat-tab label="Sign Up">
       <div class="tab">
-        <app-signup-form></app-signup-form>
+        <app-signup-form (changheTabIndex)="changheTabIndex($event)"></app-signup-form>
       </div>
     </mat-tab>
   </mat-tab-group>
