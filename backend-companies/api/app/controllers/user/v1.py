@@ -9,11 +9,11 @@ userRepo = UserRepository()
 async def get_all_users():
     return userRepo.get_all()
 
-@router.get("/{user_id}")
+@router.get("/byId/{user_id}")
 async def get_user_by_id(user_id: str):
     return userRepo.get_by_id(user_id)
 
-@router.get("/{user_email}")
+@router.get("/byEmail/{user_email}")
 async def get_user_by_email(user_email: str):
     return userRepo.get_by_email(user_email)
 
