@@ -6,6 +6,9 @@ import random
 import asyncio
 import httpx
 
+from api.app.repositories.disaster import DisasterRepository 
+
+disasterRepo = DisasterRepository()
 app = FastAPI()
 
 async def generate_mock_disaster():
@@ -71,6 +74,8 @@ async def generate_mock_disaster():
 
 async def notify_disaster():
     async for disaster in generate_mock_disaster():
+        disaster_dict = disaster.dict()
+        disasterRepo.add(disaster_dict)
         async with httpx.AsyncClient() as client:
             response = await client.post('http://localhost:8000/send_message', json=disaster) 
 
