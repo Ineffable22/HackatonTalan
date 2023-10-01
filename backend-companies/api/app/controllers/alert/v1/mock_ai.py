@@ -11,27 +11,27 @@ app = FastAPI()
 async def generate_mock_disaster():
     recommendations = {
         'Flood': [
-            'Evacuar áreas bajas.',
-            'Mover objetos valiosos a lugares altos.',
-            'Evitar conducir o caminar a través de aguas de inundación.'
+            'Evacuate low areas.',
+            'Move valuable objects to high places.',
+            'Avoid driving or walking through floodwaters.'
         ],
         'Earthquake': [
-            'Ubicarse bajo una mesa o marco de puerta fuerte.',
-            'Mantenerse alejado de ventanas y objetos que puedan caer.',
-            'Permanecer en el interior hasta que haya pasado el temblor.'
+            'Position yourself under a sturdy table or door frame.',
+            'Stay away from windows and objects that may fall.',
+            'Remain indoors until the shaking has passed.'
         ],
         'Wildfire': [
-            'Evacuar el área si se indica.',
-            'Mantenerse alejado de áreas afectadas por el incendio.',
-            'Usar una mascarilla N95 para filtrar partículas de humo del aire.'
+            'Evacuate the area if instructed.',
+            'Stay away from areas affected by the fire.',
+            'Use an N95 mask to filter smoke particles from the air.'
         ],
         'None': [
-            'Mantenerse informado y preparado.',
-            'Tener un kit de emergencia disponible.',
-            'Conocer las rutas de evacuación.'
+            'Stay informed and prepared.',
+            'Have an emergency kit available.',
+            'Know the evacuation routes.'
         ]
     }
-    peru_center = {'lat': -9.19, 'lng': -75.0152}  # Coordenadas aproximadas del centro de Perú
+    peru_center = {'lat': -9.19, 'lng': -75.0152}  # Approximate coordinates of the center of Peru
     
     while True:
         await asyncio.sleep(1)  
@@ -39,13 +39,13 @@ async def generate_mock_disaster():
         confidence = random.random()
         magnitude = random.uniform(5.0, 9.0)
         
-        # Generar un epicentro aleatorio en una región aproximada de Perú
-        lat_variation = random.uniform(-2.0, 2.0)  # Variación de latitud
-        lng_variation = random.uniform(-2.0, 2.0)  # Variación de longitud
+        # Generate a random epicenter in an approximate region of Peru
+        lat_variation = random.uniform(-2.0, 2.0)  # Latitude variation
+        lng_variation = random.uniform(-2.0, 2.0)  # Longitude variation
         epicenter = {'lat': peru_center['lat'] + lat_variation, 'lng': peru_center['lng'] + lng_variation}
         
-        # Área de impacto y zonas seguras
-        radius = random.uniform(10.0, 100.0)  # Radio del área de impacto 
+        # Impact area and safe zones
+        radius = random.uniform(10.0, 100.0)  # Radius of the impact area
         safe_zones = [
             {'lat': epicenter['lat'] + radius/111 + 0.1, 'lng': epicenter['lng'] + radius/111 + 0.1},
             {'lat': epicenter['lat'] - radius/111 - 0.1, 'lng': epicenter['lng'] - radius/111 - 0.1}
