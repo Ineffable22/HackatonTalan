@@ -18,7 +18,7 @@ export class FirebaseService {
   fcmToken: string = '';
   messaging: Messaging;
   private app: FirebaseApp;
-  private messaginObservable = new Observable<MessagePayload>((observe) => {
+  private messagingObservable = new Observable<MessagePayload>((observe) => {
     onMessage(this.messaging, (payload) => observe.next(payload));
   });
 
@@ -44,6 +44,6 @@ export class FirebaseService {
   }
 
   receiveMessage() {
-    return this.messaginObservable;
+    return this.messagingObservable;
   }
 }
