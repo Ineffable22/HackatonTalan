@@ -5,17 +5,23 @@ import { LayoutsRoutingModule } from './layouts-routing.module';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DashboardHeaderComponent } from './dashboard-layout/components/dashboard-header/dashboard-header.component';
-import { DashboardFooterComponent } from './dashboard-layout/components/dashboard-footer/dashboard-footer.component';
 import { DashboardAsideComponent } from './dashboard-layout/components/dashboard-aside/dashboard-aside.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     DashboardHeaderComponent,
-    DashboardFooterComponent,
     DashboardAsideComponent,
   ],
-  imports: [CommonModule, LayoutsRoutingModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    LayoutsRoutingModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+  ],
   exports: [DashboardLayoutComponent],
 })
 export class LayoutsModule {}

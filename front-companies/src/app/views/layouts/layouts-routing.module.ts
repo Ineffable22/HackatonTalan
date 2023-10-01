@@ -9,9 +9,13 @@ import { ProfileComponent } from '../pages/profile/profile.component';
 const routes: Routes = [
   {
     path: 'dashboard',
+    redirectTo: 'dashboard/home',
+  },
+  {
+    path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
-      { path: '', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent },
       { path: 'alerts', component: AlertsComponent },
       { path: 'config', component: ConfigurationComponent },
       { path: 'profile', component: ProfileComponent },

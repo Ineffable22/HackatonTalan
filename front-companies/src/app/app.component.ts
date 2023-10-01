@@ -8,5 +8,9 @@ import { FirebaseService } from './services/firebase.service';
 })
 export class AppComponent {
   title = 'Sentinel Earth';
-  constructor(firebaseService: FirebaseService) {}
+  constructor(private firebase: FirebaseService) {
+    this.firebase.requestPermission().then((token) => {
+      console.log(token);
+    });
+  }
 }
