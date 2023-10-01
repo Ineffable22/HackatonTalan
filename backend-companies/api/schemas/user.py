@@ -4,6 +4,8 @@ def userEntity(item) -> dict:
         "name": item["name"],
         "email": item["email"],
         "password": item["password"],
+        "lat": item["lat"],
+        "long": item["long"],
         "fcmtoken": item["fcmtoken"],
     }
     
