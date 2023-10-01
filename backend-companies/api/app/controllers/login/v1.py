@@ -9,5 +9,12 @@ userServ = UserService()
 async def user_login(user_login: UserLoginDto):
     try:
         return userServ.user_login(user_login)
-    except HTTPException as e:
-        return e.detail
+    except HTTPException as ex:
+        err_detail = ex.detail
+        raise HTTPException(
+            status_code = ex.status_code,
+            detail = {
+                "code": err_detail["code"],
+                "message": err_detail["message"]
+            }
+        )
