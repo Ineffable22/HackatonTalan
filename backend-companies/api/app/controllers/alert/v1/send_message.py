@@ -29,10 +29,10 @@ async def send_message(info: dict):
     # radius = 
     # users = find_users(lat_min, lat_max, long_min, long_max)
     users = find_users()
-    if users is None:
+    if users is []:
         return {"Message": "Unaffected area"}
-    # for user in users:
     # WARNING: Cambiar el token de prueba por el token del usuario
     info_s = json.dumps(info)
-    send_topic_push(info.get('predicted_disaster', ""), info_s, fcm_token)
+    for user in users:
+        send_topic_push(info.get('predicted_disaster', ""), info_s, user.get('fcm_token'))
     return {"Message": "Users informed"}
