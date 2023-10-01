@@ -34,5 +34,5 @@ async def send_message(info: dict):
     # WARNING: Cambiar el token de prueba por el token del usuario
     info_s = json.dumps(info)
     for user in users:
-        send_topic_push(info.get('predicted_disaster', ""), info_s, user.get('fcm_token'))
+        send_topic_push(info.get('predicted_disaster', ""), info_s, user.get('fcmtoken'))
     return {"Message": "Users informed"}
