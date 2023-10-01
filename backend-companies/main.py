@@ -1,7 +1,5 @@
-from fastapi import FastAPI
 from api.config.server import create_config_app
 from api.routes.routes import router
-
 
 app = create_config_app()
 app.include_router(router, prefix="/api")
