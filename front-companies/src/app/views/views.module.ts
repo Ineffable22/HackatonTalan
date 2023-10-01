@@ -12,8 +12,6 @@ import { LoginFormComponent } from './pages/entry-page/components/login-form/log
 import { SignupFormComponent } from './pages/entry-page/components/signup-form/signup-form.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AlertsComponent } from './pages/alerts/alerts.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ConfigurationComponent } from './pages/configuration/configuration.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +20,6 @@ import { ConfigurationComponent } from './pages/configuration/configuration.comp
     LoginFormComponent,
     SignupFormComponent,
     AlertsComponent,
-    ProfileComponent,
-    ConfigurationComponent,
   ],
   imports: [
     CommonModule,
@@ -35,12 +31,6 @@ import { ConfigurationComponent } from './pages/configuration/configuration.comp
     MatIconModule,
     LayoutsModule,
   ],
-  exports: [
-    EntryPageComponent,
-    DashboardComponent,
-    AlertsComponent,
-    ProfileComponent,
-    ConfigurationComponent,
-  ],
+  exports: [EntryPageComponent, DashboardComponent, AlertsComponent],
 })
 export class ViewsModule {}

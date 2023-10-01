@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { AlertsComponent } from '../pages/alerts/alerts.component';
-import { ConfigurationComponent } from '../pages/configuration/configuration.component';
-import { ProfileComponent } from '../pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -17,8 +15,6 @@ const routes: Routes = [
     children: [
       { path: 'home', component: DashboardComponent },
       { path: 'alerts', component: AlertsComponent },
-      { path: 'config', component: ConfigurationComponent },
-      { path: 'profile', component: ProfileComponent },
     ],
   },
 ];
