@@ -42,6 +42,6 @@ Sentinel Earth is a crucial tool in our quest to minimize the devastating impact
 
 ---
 
-### 🌟 "With Sentinel Earth, we unite our strengths and technologies to be the guardians of our beautiful planet, inspiring actions that forge a safer and more resilient future for all. Together, we are the first line of defense against natural disasters, protecting present and future generations!"
+🌟 With Sentinel Earth, we unite our strengths and technologies to be the guardians of our beautiful planet, inspiring actions that forge a safer and more resilient future for all. Together, we are the first line of defense against natural disasters, protecting present and future generations!"
 ! 🌟
 
