@@ -4,6 +4,7 @@ from fastapi import APIRouter
 from api.app.services.alert.find_users import find_users
 from api.app.services.alert.find_area import calculate_area
 # fcm_token = 'dpLM3ZRQS-O8a7yG8jzdvL:APA91bEyHKhKlFavXyOwqjSQ2fn0eD3TTkwVOJSav6txBT17Lf4rtsZxrlbBW5IJMZ9t97-Xsyzm1bUf-3ZGzPwkW10Wr1mfk--xv1D_VmlqN3OrNx93pp7QmKIp_poD67xMcRcGMIP0'
+import json
 
 router = APIRouter()
 
@@ -30,7 +31,8 @@ async def send_message(info: dict):
     users = find_users()
     if users is None:
         return {"Message": "Unaffected area"}
-    
-    for user in users:
-            send_topic_push(info.predicted_disaster, info, user.get('fcm_token'))
+    # for user in users:
+    # WARNING: Cambiar el token de prueba por el token del usuario
+    info_s = json.dumps(info)
+    send_topic_push(info.get('predicted_disaster', ""), info_s, fcm_token)
     return {"Message": "Users informed"}
