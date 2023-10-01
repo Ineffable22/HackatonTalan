@@ -1,0 +1,22 @@
+<aside class="container">
+  <ul class="list">
+    <li>
+      <a class="link" routerLinkActive="selected" routerLink="/dashboard/home">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a class="link" routerLinkActive="selected" routerLink="/dashboard/alerts">
+        <mat-icon>warning</mat-icon>
+        Alerts
+      </a>
+    </li>
+    <li>
+      <a class="link" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Log out
+      </a>
+    </li>
+  </ul>
+</aside>

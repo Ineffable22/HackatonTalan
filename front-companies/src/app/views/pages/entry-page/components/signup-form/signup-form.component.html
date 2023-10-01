@@ -1,0 +1,60 @@
+<form [formGroup]="signupForm" class="formContainer">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" placeholder="Enter your name" type="text">
+
+    <mat-error *ngIf="nameController.hasError('required')">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Enter your email" type="email">
+
+    <mat-error *ngIf="emailController.hasError('email') && !emailController.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailController.hasError('required')">
+      Email is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" placeholder="Enter your password"
+      [type]="showPassword ? 'text' : 'password'">
+    <button matSuffix mat-icon-button (click)="showPassword=!showPassword">
+      <mat-icon>{{showPassword ? "visibility" : 'visibility_off'}}</mat-icon>
+    </button>
+
+    <mat-error *ngIf="passwordControl.hasError('required')">
+      Password is required
+    </mat-error>
+
+    <mat-error *ngIf="passwordControl.hasError('maxlength') || passwordControl.hasError('minlength')">
+      The password should have between 8 and 36 characters
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Confirm Passowrd</mat-label>
+    <input matInput formControlName="confirmPassword" placeholder="Repeat your password"
+      [type]="showConfirmPassword ? 'text' : 'password'">
+    <button matSuffix mat-icon-button (click)="showConfirmPassword=!showConfirmPassword">
+      <mat-icon>{{showConfirmPassword ? "visibility" : 'visibility_off'}}</mat-icon>
+    </button>
+
+    <mat-error *ngIf="confirmPasswordControl.hasError('required')">
+      Confirm Password is required
+    </mat-error>
+
+    <mat-error
+      *ngIf="confirmPasswordControl.hasError('passwordMismatchError') && !confirmPasswordControl.hasError('required')">
+      Should be equal to the password
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" [disabled]="!signupForm.valid" (click)="submitForm($event)">Sign Up</button>
+
+</form>
