@@ -37,7 +37,7 @@ class UserRepository:
             return userEntity(user)
         return None
     
-    def filter_all(self, search: dict):
+    def filter_all(self, search: dict=None):
         users = []
         cursor = collection.find(search)
         if (cursor):

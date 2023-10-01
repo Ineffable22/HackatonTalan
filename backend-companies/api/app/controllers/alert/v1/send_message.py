@@ -10,12 +10,27 @@ router = APIRouter()
 @router.post("", status_code=200)
 async def send_message(info: dict):
     """Send a alert message"""
-    users = find_users(lat_min, lat_max, long_min, long_max)
+    # disaster = {
+    #         'predicted_disaster': predicted_disaster,
+    #         'confidence': confidence,
+    #         'magnitude': magnitude,
+    #         'epicenter': epicenter,
+    #         'safe_zones': safe_zones,
+    #         'danger_level': danger_level,
+    #         'recommendations': selected_recommendations,
+    #         'impact_area': {'center': epicenter, 'radius': radius}  
+    #}
+
+    # lat_min = info.impact_area
+    # lat_max = info.impact_area
+    # long_min = info.impact_area
+    # long_max = info.impact_area
+    # radius = 
+    # users = find_users(lat_min, lat_max, long_min, long_max)
+    users = find_users()
     if users is None:
         return {"Message": "Unaffected area"}
     
     for user in users:
-        affect = calculate_area(lat_min, lat_max, long_min, long_max)
-        if affect is True:
-            send_topic_push(title, body, fcm_token)
+            send_topic_push(info.predicted_disaster, info, user.get('fcm_token'))
     return {"Message": "Users informed"}
